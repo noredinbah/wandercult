@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.container {
+  width: 100%;
+  height: 90vh;
+  background-color: #f1f9ff;
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.logoText {
+  width: 350px;
+}
+
+.slogan {
+  margin-top: -25px;
+  margin-left: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  color: #7d7d7d;
+}
+
+
+.banner {
+  margin-left: 50px;
+  margin-top: -50px;
+  margin-bottom: 20px;
+}
+
+.left {
+  margin-top: 30px;
+  position: relative;
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  margin-left: 110px;
+  top: -50px;
+}
+.logo {
+  position: absolute;
+  width: 55px;
+  left: 45%;
+  top: 5%;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+
+.email {
+  width: 75%;
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #40c057;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.usernamee {
+  width: 110px;
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #40c057;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.emaill {
+  width: 110px;
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #40c057;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.password {
+  width: 75%;
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.btn1 {
+  width: 250px;
+  height: 48px;
+  margin-top: 30px;
+  background-image: linear-gradient(to right, #40c057, #29abe2);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+.line {
+  margin-top: 15px;
+  width: 70%;
+  height: 1px;
+  background-color: #cfcfcf;
+}
+.forgot {
+  margin-top: -5px;
+  font-size: 12px;
+  color: #40c057;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.signup {
+  font-size: 10px;
+  position: absolute;
+  bottom: -20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.signin {
+  color: #40c057;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.list {
+  margin-top: 30px;
+  display: flex;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+ul li {
+  list-style: none;
+  margin-left: 15px;
+  font-size: 11px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
+}
+.l1 {
+  color: #29abe2;
+}
+
+.or {
+  position: absolute;
+  bottom: -10%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  color: #141414;
+}
+.errorlogin {
+  position: absolute;
+  color: red;
+  font-size: 11px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 10px;
+}
+
+.google-login-button {
+  position: absolute;
+  bottom: -30%;
+  scale: 1.3;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px 100px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: poppins, sans-serif;
+  font-size: 11px;
+  gap: 5px;
+  background-image: linear-gradient(to left, #baffc6, #deeff8);
+}
+
+.google-icon {
+  font-size: 20px;
+  margin-bottom: 1px;
+}
+/* Fixed size for the accounts container */
+.accounts {
+  width: 100%;
+  max-width: 1200px; /* Maximum width for larger screens */
+  min-height: 330px; /* Increased height to contain more cards */
+  overflow-y: auto; /* Adds vertical scrollbar if content overflows */
+  margin: 0 auto; /* Center the container */
+  margin-left: 50px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Ensures 3 cards per row */
+  gap: 20px; /* Space between cards */
+}
+
+/* Styling for each account card */
+.account-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 220px; /* Set a maximum width to maintain consistency */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Add a subtle scale effect on hover */
+.account-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile section styling */
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* Profile image styling */
+.profile-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid #00ff6e; /* Border around the image */
+}
+
+/* Account info container */
+.account-info {
+  text-align: left;
+  flex: 1;
+}
+
+/* Username styling */
+.usernamee {
+  font-size: 18px;
+  color: #333;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." for overflowing text */
+}
+
+/* Email styling */
+.emaill {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." for overflowing text */
+}
+
+/* Common button styling */
+.account-button {
+  padding: 10px 14px;
+  border: 2px solid rgb(0, 255, 110);
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: rgb(0, 255, 110);
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+/* Styling for the delete button */
+.delete-button {
+  background-color: #ff4b5c;
+  color: #ffffff;
+  border-color: #ff4b5c;
+}
+
+/* Hover effect for buttons */
+.account-button:hover {
+  background-color: rgb(0, 255, 110);
+  color: #ffffff;
+  border-color: rgb(0, 255, 110);
+}
+
+/* Hover effect for the delete button */
+.delete-button:hover {
+  background-color: #e12b36;
+  border-color: #e12b36;
+}

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="city_info.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    
+    <title>city_info</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="assets/images/logo.png" alt="logo" class="logo" />
+        <img src="assets/images/logoText.png" alt="logoText" class="logotext" />
+        <img
+        src="assets/images/search.png"
+        alt="search"
+        class="icon icon-searcher"
+        id="myButton"
+        onclick="performSear()"/>
+        <input type="text" id="searchInput" placeholder="Search places" class="search" />
+        <% if (profileImagePath) { %>
+          <img src="<%= profileImagePath %>" id="profile-button" alt="avatar" class="avatar" onclick="window.location.href='/profile';" >
+          <% } else { %>
+            <img src="assets/images/firefly.jpg" id="profile-button" alt="avatar" class="avatar" onclick="window.location.href='/profile';" />
+            <% }%>  
+          </header>
+      <container>
+        <div class="left">
+          <ul>
+            <span class="first">
+              <img
+                src="assets/images/home.png"
+                alt="home"
+                class="icon home-icon"
+              />
+              <li><a href="/home">Home</a></li>
+            </span>
+            <span>
+              <img
+                src="assets/images/old-phone_11552945.png"
+                alt="advice"
+                class="icon discover-icon"
+              />
+              <li><a href="/help">Numbers & advise</a></li>
+            </span>
+            <span>
+              <img
+                src="assets/images/error-sign_76789.png"
+                alt="friends"
+                class="icon friends-icon"
+              />
+              <li><a href="/report">Report</a></li>
+            </span>
+            <span>
+              <img
+                src="assets/images/saved.png"
+                alt="saved"
+                class="icon saved-icon"
+              />
+              <li><a href="/saved">Saved</a></li>
+            </span>
+          </ul>
+          <div class="line1"></div>
+          <ul class="ul2">
+            <span>
+              <img
+                src="assets/images/settings.png"
+                alt="settings"
+                class="icon settings-icon"
+              />
+              <li><a href="/settings">settings</a></li>
+            </span>
+            <span>
+              <img
+                src="assets/images/logout.png"
+                alt="logout"
+                class="icon logout-icon"
+              />
+              <li><a href="/logout">Logout</a></li>
+            </span>
+          </ul>
+          <div class="info">
+            <a href="usage_condition.html" target="_blank"
+              >Terms and services</a
+            >
+            <a href="securityTerms.html" target="_blank"> Privacy Policy</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="cardcity">
+            <h1 id="cityName"></h1>
+          </div>
+         
+          <div class="top">
+            <div class="banner" id="banner">
+              <div class="bannerText">
+                <img
+                  src="assets/images/left-arrow.png"
+                  alt="left-arrow"
+                  class="left-arrow"
+                  onclick="changePhrase('prev')"
+                />
+                <img
+                  src="assets/images/right-arrow.png"
+                  alt="right-arrow"
+                  class="right-arrow"
+                  onclick="changePhrase('next')"
+                />
+                <h2 id="bannerPhrase"></h2>
+                <p></p>
+                <div class="circle circle1 active"></div>
+                <div class="circle circle2"></div>
+                <div class="circle circle3"></div>
+                <div class="circle circle4"></div>
+                <div class="circle circle5"></div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card-container">
+            <div class="card">
+              <div class="card-content">
+                <div class="creative-icon">
+                  <i class="fas fa-paint-palette"></i>
+                </div>
+                <h2 class="card-title">Description</h2>
+                <p class="card-description" id="description"></p>
+                <p id="adminName"></p>
+                <p id="population"></p>
+                <div class="creative-elements">
+                  <div class="brush-stroke"></div>
+                  <div class="paint-splatter"></div>
+                  <div class="color-burst"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="cardscams">
+
+            <div class="container2">
+              <button id="prev" class="nav-button prev"> < </button>
+              <div class="card2 card-1" id="card1">
+                <div class="card2-content">
+                  <h2 class="card2-title">Scams!!</h2>
+                  <p class="card2-description" id="arnaques"></p>
+                </div>
+                <div class="creative-elements">
+                  <div class="light-rays"></div>
+                  <div class="sparkles"></div>
+                  <div class="idea-bubbles"></div>
+                </div>
+              </div>
+              <div class="card2 card-2" id="card2" style="display: none;">
+                <div class="card2-content">
+                  <h2 class="card2-title">Scams!!</h2>
+                  <p class="card2-description" id="arnaques2"></p>
+                </div>
+                <div class="creative-elements">
+                  <div class="light-rays"></div>
+                  <div class="sparkles"></div>
+                  <div class="idea-bubbles"></div>
+                </div>
+              </div>
+              <div class="card2 card-3" id="card3" style="display: none;">
+                <div class="card2-content">
+                  <h2 class="card2-title">Scams!!</h2>
+                  <p class="card2-description" id="arnaques3"></p>
+                </div>
+                <div class="creative-elements">
+                  <div class="light-rays"></div>
+                  <div class="sparkles"></div>
+                  <div class="idea-bubbles"></div>
+                </div>
+              </div>
+              <div class="card2 card-4" id="card4" style="display: none;">
+                <div class="card2-content">
+                  <h2 class="card2-title">Scams!!</h2>
+                  <p class="card2-description" id="arnaques4"></p>
+                </div>
+                <div class="creative-elements">
+                  <div class="light-rays"></div>
+                  <div class="sparkles"></div>
+                  <div class="idea-bubbles"></div>
+                </div>
+              </div>
+              <div class="card2 card-5" id="card5" style="display: none;">
+                <div class="card2-content">
+                  <h2 class="card2-title">Scams!!</h2>
+                  <p class="card2-description" id="arnaques5"></p>
+                </div>
+                <div class="creative-elements">
+                  <div class="light-rays"></div>
+                  <div class="sparkles"></div>
+                  <div class="idea-bubbles"></div>
+                </div>
+              </div>
+              <button id="next" class="nav-button next"> > </button>
+            </div>
+          </div> 
+          <div id="map"></div>
+
+            <script>
+              const cards = document.querySelectorAll('.card2');
+              const prevBtn = document.getElementById('prev');
+              const nextBtn = document.getElementById('next');
+              let currentIndex = 0;
+          
+              function showCard(index) {
+                cards.forEach((card, i) => {
+                  card.style.display = i === index ? 'block' : 'none';
+                });
+              }
+          
+              prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                showCard(currentIndex);
+              });
+          
+              nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                showCard(currentIndex);
+              });
+          
+              showCard(currentIndex);
+            </script>
+        </div>
+
+      </container>
+    </div>
+
+
+    <!-- Chatbot Button and Container -->
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+      <div class="info-card">Talk to WandyBot</div>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>WandyBot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi there <br>How can I help you today?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const chatbotToggle = document.querySelector(".chatbot-toggler");
+const infoCard = document.querySelector(".info-card");
+const closeBt = document.querySelector(".close-btn");
+
+chatbotToggle.addEventListener("mouseover", function() {
+  if (!document.body.classList.contains("show-chatbot")) {
+    infoCard.style.display = "block";
+  }
+});
+
+chatbotToggle.addEventListener("mouseout", function() {
+  infoCard.style.display = "none";
+});
+
+
+  </script>
+
+
+  <script src="card.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+    
+        // Check if dark mode is already enabled
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+    
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    });
+    </script>
+    <script>
+      const phrases = [
+  "", 
+  "",
+  "", 
+  "",
+  ""
+];
+
+
+function getQueryarams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    city: params.get("city"),
+    admin_name: params.get("admin_name"),
+    population: params.get("population"),
+    image: params.get("image"),
+    image1: params.get("image1"),
+    image2: params.get("image2"),
+    image3: params.get("image3"),
+    image4: params.get("image4"),
+    arnaques: params.get("arnaques"),
+    arnaques2: params.get("arnaques2"),
+    arnaques3: params.get("arnaques3"),
+    arnaques4: params.get("arnaques4"),
+    arnaques5: params.get("arnaques5"),
+    description: params.get("description"),
+    lat: params.get("lat"),
+    lng: params.get("lng"),
+  };
+}
+
+// Extraire les informations de la ville
+const cityInf = getQueryarams();
+
+
+
+
+const images = [
+cityInf.image, 
+cityInf.image1, 
+cityInf.image2, 
+cityInf.image3, 
+cityInf.image4, 
+];
+
+let currentPhraseIndex = 0;
+let isTransitioning = false;
+let autoChangeInterval;
+
+function changePhrase(direction) {
+  if (isTransitioning) return;
+  isTransitioning = true;
+
+  const bannerPhrase = document.getElementById("bannerPhrase");
+  const banner = document.getElementById("banner");
+
+  bannerPhrase.classList.add("fade-out");
+
+  setTimeout(() => {
+    if (direction === "next") {
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+    } else if (direction === "prev") {
+      currentPhraseIndex = (currentPhraseIndex - 1 + phrases.length) % phrases.length;
+    }
+
+    bannerPhrase.textContent = phrases[currentPhraseIndex];
+
+    // Update the background image
+    banner.style.backgroundImage = `url(${images[currentPhraseIndex]})`;
+
+    updateActiveCircle();
+
+    bannerPhrase.classList.remove("fade-out");
+    bannerPhrase.classList.add("fade-in");
+
+    setTimeout(() => {
+      bannerPhrase.classList.remove("fade-in");
+      isTransitioning = false;
+    }, 500);
+  }, 500);
+}
+
+function updateActiveCircle() {
+  const circles = document.querySelectorAll(".circle");
+  circles.forEach((circle, index) => {
+    if (index === currentPhraseIndex) {
+      circle.classList.add("active");
+    } else {
+      circle.classList.remove("active");
+    }
+  });
+}
+
+function startAutoChange() {
+  autoChangeInterval = setInterval(() => {
+    changePhrase('next');
+  }, 1000);
+}
+
+function stopAutoChange() {
+  clearInterval(autoChangeInterval);
+}
+
+window.onload = () => {
+  startAutoChange();
+  document.getElementById("banner").style.backgroundImage = `url(${images[0]})`;
+};
+
+document.querySelectorAll('.left-arrow, .right-arrow').forEach(button => {
+  button.addEventListener('click', () => {
+    stopAutoChange();
+    startAutoChange();
+  });
+});
+
+const chatbotToggler = document.querySelector(".chatbot-toggler");
+const closeBtn = document.querySelector(".close-btn");
+const chatbox = document.querySelector(".chatbox");
+const chatInput = document.querySelector(".chat-input textarea");
+const sendChatBtn = document.querySelector(".chat-input span");
+
+let userMessage = null; // Variable to store user's message
+const inputInitHeight = chatInput.scrollHeight;
+
+// API configuration
+const API_KEY = "AIzaSyBK1OSc9bQsZNtUj5by_79ZsDCULF5jhmQ"; // Your API key here
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+
+const createChatLi = (message, className) => {
+  // Create a chat <li> element with passed message and className
+  const chatLi = document.createElement("li");
+  chatLi.classList.add("chat", `${className}`);
+  let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+  chatLi.innerHTML = chatContent;
+  chatLi.querySelector("p").textContent = message;
+  return chatLi; // return chat <li> element
+}
+
+const generateResponse = async (chatElement) => {
+  const messageElement = chatElement.querySelector("p");
+
+  // Define the properties and message for the API request
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ 
+      contents: [{ 
+        role: "user", 
+        parts: [{ text: userMessage }] 
+      }] 
+    }),
+  }
+
+  // Send POST request to API, get response and set the reponse as paragraph text
+  try {
+    const response = await fetch(API_URL, requestOptions);
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error.message);
+    
+    // Get the API response text and update the message element
+    messageElement.textContent = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1');
+  } catch (error) {
+    // Handle error
+    messageElement.classList.add("error");
+    messageElement.textContent = error.message;
+  } finally {
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+  }
+}
+
+const handleChat = () => {
+  userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
+  if (!userMessage) return;
+
+  // Clear the input textarea and set its height to default
+  chatInput.value = "";
+  chatInput.style.height = `${inputInitHeight}px`;
+
+  // Append the user's message to the chatbox
+  chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+  chatbox.scrollTo(0, chatbox.scrollHeight);
+
+  setTimeout(() => {
+    // Display "Thinking..." message while waiting for the response
+    const incomingChatLi = createChatLi("Thinking...", "incoming");
+    chatbox.appendChild(incomingChatLi);
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+    generateResponse(incomingChatLi);
+  }, 600);
+}
+
+chatInput.addEventListener("input", () => {
+  // Adjust the height of the input textarea based on its content
+  chatInput.style.height = `${inputInitHeight}px`;
+  chatInput.style.height = `${chatInput.scrollHeight}px`;
+});
+
+chatInput.addEventListener("keydown", (e) => {
+  // If Enter key is pressed without Shift key and the window 
+  // width is greater than 800px, handle the chat
+  if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+    e.preventDefault();
+    handleChat();
+  }
+});
+
+sendChatBtn.addEventListener("click", handleChat);
+closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+
+
+    </script>
+</html>
