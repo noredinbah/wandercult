@@ -36,7 +36,10 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "views")));
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/auth_Wandercult", {
+
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/auth_Wandercult';
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, // 30 seconds
