@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     
-    <script src="card.js" defer></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>advise</title>
     <script defer>
@@ -174,6 +174,7 @@
     </div>
 
   </div>
+  
   <script>
     const chatbotToggle = document.querySelector(".chatbot-toggler");
 const infoCard = document.querySelector(".info-card");
@@ -201,9 +202,7 @@ const sendChatBtn = document.querySelector(".chat-input span");
 let userMessage = null; // Variable to store user's message
 const inputInitHeight = chatInput.scrollHeight;
 
-// API configuration
-const API_KEY = "AIzaSyBK1OSc9bQsZNtUj5by_79ZsDCULF5jhmQ"; // Your API key here
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+
 
 const createChatLi = (message, className) => {
   // Create a chat <li> element with passed message and className
@@ -291,5 +290,6 @@ chatbotToggler.addEventListener("click", () => document.body.classList.toggle("s
 </script>
     </div>
   </body>
-  
+      <script src="card.js" defer></script>
+    <script src="api.js"></script>
 </html>
