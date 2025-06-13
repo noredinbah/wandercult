@@ -1,5 +1,7 @@
 /* istanbul ignore next */
-const API_KEY = "ghjk";
+const API_KEY = process.env.GEMINI_API_KEY || "test-key";
 
-/* istanbul ignore next */
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+const buildApiUrl = (key) => 
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`;
+
+const API_URL = buildApiUrl(API_KEY);
