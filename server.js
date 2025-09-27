@@ -598,8 +598,15 @@ app.get("/api/reports", async (req, res) => {
   }
 });
 
+const API_KEY = process.env.API_KEY;
+const API_BASE_URL = process.env.API_BASE_URL;
+const API_URL = `${API_BASE_URL}?key=${API_KEY}`;
+
+// Make globally available to all EJS templates
+app.locals.API_KEY = API_KEY;
+app.locals.API_URL = API_URL;
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
