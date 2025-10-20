@@ -1,0 +1,53 @@
+# Node modules (will be installed inside Docker)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build and cache directories
+dist
+build
+.cache
+coverage
+
+# Logs
+*.log
+logs
+*.pid
+*.seed
+*.pid.lock
+
+# Environment and config files
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Git and version control
+.git
+.gitignore
+.gitattributes
+
+# Docker and CI/CD files (except Dockerfile itself)
+docker-compose.yml
+Dockerfile*
+.dockerignore
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Temporary files
+tmp
+temp
+*.tmp
+
+# Tests (optional — include if not needed in production)
+__tests__/
+test/
+*.spec.js
+*.test.js
