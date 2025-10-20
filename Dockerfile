@@ -22,7 +22,7 @@ COPY --from=builder /app/ ./
 USER node
 
 # Expose port (adjust if your app uses a different port)
-EXPOSE 3000
+EXPOSE 4000
 
 # Start the server (use "node" instead of "npm start" for efficiency)
 CMD ["node", "server.js"]
