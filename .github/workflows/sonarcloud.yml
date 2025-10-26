@@ -51,17 +51,17 @@ jobs:
           sudo dpkg -i trivy_${TRIVY_VERSION#v}_Linux-64bit.deb
 
 
-      # 👇 Run Trivy scan and generate HTML report
-      - name: Scan Docker image with Trivy
+      - name: Run Trivy scan
         run: |
           mkdir -p reports
-          trivy image noredineba/wandercult:${TAG} \
+          wget https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl -O html.tpl
+          trivy image \
+            --scanners vuln,secret \
             --format template \
-            --template "@contrib/html.tpl" \
-            --output reports/trivy-report.html \
-            --severity CRITICAL,HIGH \
-            --exit-code 1 \
-            --vuln-type os,library
+            --template "@html.tpl" \
+            -o reports/trivy-report.html \
+            noredineba/wandercult:${TAG}
+
         continue-on-error: true  # Allow report generation even if vulnerabilities found
 
       # 👇 Upload Trivy report as an artifact
